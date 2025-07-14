@@ -1,0 +1,282 @@
+file 34469 1747738581                                           
+version 3
+run General-0-20250520-12:26:28-41946
+attr configname General
+attr datetime 20250520-12:26:28
+attr datetimef 20250520-122628
+attr experiment General
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network TcpNetwork
+attr processid 41946
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config image-path ../inet4.5/images
+config network TcpNetwork
+config sim-time-limit 5000s
+config **.vector-recording true
+config **.client.numApps 1
+config **.client.app[0].typename TcpSessionApp
+config **.client.app[0].active true
+config **.client.app[0].connectAddress "\"server\""
+config **.client.app[0].connectPort 1000
+config **.client.app[0].sendBytes 1MiB
+config **.client.app[0].tOpen 0s
+config **.client.app[0].tSend 0.1s
+config **.client.app[0].tClose 10s
+config **.server.numApps 1
+config **.server.app[0].typename TcpSinkApp
+config **.server.app[0].active false
+config **.server.app[0].localPort 1000
+config **.tcp.recordStatistics true
+config **.tcp.dataReceived:vector true
+config **.tcp.rcvdPk:vector true
+config **.tcp.rcvQueueLength:vector true
+config **.tcp.rtt:vector true
+
+vector 0 TcpNetwork.client.ethernet encapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source encapPk
+attr title "packets encapsulated, packetBytes"
+0	33307 30 5 19 0 0.00201152 2 28 44 72 2720
+vector 1 TcpNetwork.client.ethernet decapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source decapPk
+attr title "packets decapsulated, packetBytes"
+1	33337 20 17 17 0.00201152 0.00201152 1 46 46 46 2116
+vector 7 TcpNetwork.client.eth[0].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+7	33357 73 0 20 0 0.00201152 7 0 0 0 0
+vector 8 TcpNetwork.client.eth[0].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+8	33430 73 0 20 0 0.00201152 7 0 0 0 0
+vector 9 TcpNetwork.client.eth[0].queue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+9	33503 28 6 20 0 0.00201152 2 0 0 0 0
+vector 10 TcpNetwork.client.eth[0].queue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+10	33531 34 6 20 0 0.00201152 2 368 496 864 381440
+vector 12 TcpNetwork.client.eth[0].queue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+12	33565 34 6 20 0 0.00201152 2 368 496 864 381440
+vector 18 TcpNetwork.client.eth[0].mac txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, packetBytes"
+18	33599 41 7 21 0.00000576 0.00201728 2 64 64 128 8192
+vector 19 TcpNetwork.client.eth[0].mac rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, packetBytes"
+19	33640 21 16 16 0.00201152 0.00201152 1 64 64 64 4096
+vector 20 TcpNetwork.client.eth[0].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, packetBytes"
+20	33661 21 16 16 0.00201152 0.00201152 1 64 64 64 4096
+vector 23 TcpNetwork.client.eth[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, packetBytes"
+23	33682 32 6 20 0 0.00201152 2 46 62 108 5960
+vector 35 TcpNetwork.client.ipv4.arp arpRequestSent:vector(packetBytes) ETV
+attr recordingmode vector(packetBytes)
+attr source arpRequestSent
+attr title "ARP request sent, packetBytes"
+35	33714 11 4 4 0 0 1 28 28 28 784
+vector 39 TcpNetwork.client.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+39	33725 10 0 0 0 0 1 0 0 0 0
+vector 40 TcpNetwork.client.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+40	33735 10 0 0 0 0 1 0 0 0 0
+vector 41 TcpNetwork.client.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+41	33745 10 0 0 0 0 1 0 0 0 0
+vector 45 TcpNetwork.server.ethernet encapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source encapPk
+attr title "packets encapsulated, packetBytes"
+45	33755 42 12 28 0.00100576 0.00301728 2 28 44 72 2720
+vector 46 TcpNetwork.server.ethernet decapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source decapPk
+attr title "packets decapsulated, packetBytes"
+46	33797 42 10 24 0.00100576 0.00301728 2 46 46 92 4232
+vector 52 TcpNetwork.server.eth[0].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+52	33839 70 0 13 0 0.00100576 6 0 0 0 0
+vector 53 TcpNetwork.server.eth[0].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+53	33909 70 0 13 0 0.00100576 6 0 0 0 0
+vector 54 TcpNetwork.server.eth[0].queue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+54	33979 20 13 13 0.00100576 0.00100576 1 0 0 0 0
+vector 55 TcpNetwork.server.eth[0].queue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+55	33999 22 13 13 0.00100576 0.00100576 1 368 368 368 135424
+vector 57 TcpNetwork.server.eth[0].queue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+57	34021 22 13 13 0.00100576 0.00100576 1 368 368 368 135424
+vector 63 TcpNetwork.server.eth[0].mac txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, packetBytes"
+63	34043 21 14 14 0.00101152 0.00101152 1 64 64 64 4096
+vector 64 TcpNetwork.server.eth[0].mac rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, packetBytes"
+64	34064 41 9 23 0.00100576 0.00301728 2 64 64 128 8192
+vector 65 TcpNetwork.server.eth[0].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, packetBytes"
+65	34105 41 9 23 0.00100576 0.00301728 2 64 64 128 8192
+vector 68 TcpNetwork.server.eth[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, packetBytes"
+68	34146 21 13 13 0.00100576 0.00100576 1 46 46 46 2116
+vector 81 TcpNetwork.server.ipv4.arp arpReplySent:vector(packetBytes) ETV
+attr recordingmode vector(packetBytes)
+attr source arpReplySent
+attr title "ARP replies sent, packetBytes"
+81	34167 21 11 11 0.00100576 0.00100576 1 28 28 28 784
+vector 84 TcpNetwork.server.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+84	34188 10 0 0 0 0 1 0 0 0 0
+vector 85 TcpNetwork.server.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+85	34198 10 0 0 0 0 1 0 0 0 0
+vector 86 TcpNetwork.server.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+86	34208 10 0 0 0 0 1 0 0 0 0
+vector 95 TcpNetwork.server.tcp.conn-1 rcvSeq:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+95	34218 20 26 26 0.00301728 0.00301728 1 0 0 0 0
+vector 96 TcpNetwork.server.tcp.conn-1 rcvAck:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+96	34238 20 26 26 0.00301728 0.00301728 1 0 0 0 0
+vector 107 TcpNetwork.server.tcp.conn-1 tcpRcvPayloadBytes:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+107	34258 21 26 26 0.00301728 0.00301728 1 0 0 0 0
+vector 120 TcpNetwork.client.tcp.conn-2 rcvWnd:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+120	34279 14 3 3 0 0 1 7504 7504 7504 56310016
+vector 121 TcpNetwork.client.tcp.conn-2 rcvAdv:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+121	34293 14 3 3 0 0 1 7504 7504 7504 56310016
+vector 123 TcpNetwork.client.tcp.conn-2 sndAck:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+123	34307 11 3 3 0 0 1 0 0 0 0
+vector 134 TcpNetwork.client.tcp.conn-2 tcpRcvQueueBytes:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+134	34318 11 3 3 0 0 1 0 0 0 0
+vector 148 TcpNetwork.server.tcp.conn-3 sndWnd:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+148	34329 24 26 26 0.00301728 0.00301728 1 7504 7504 7504 56310016
+vector 149 TcpNetwork.server.tcp.conn-3 rcvWnd:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+149	34353 24 26 26 0.00301728 0.00301728 1 7504 7504 7504 56310016
+vector 150 TcpNetwork.server.tcp.conn-3 rcvAdv:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+150	34377 48 26 26 0.00301728 0.00301728 2 7505 7505 15010 112650050
+vector 152 TcpNetwork.server.tcp.conn-3 sndAck:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+152	34425 21 26 26 0.00301728 0.00301728 1 1 1 1 1
+vector 163 TcpNetwork.server.tcp.conn-3 tcpRcvQueueBytes:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+163	34446 23 26 26 0.00301728 0.00301728 1 0 0 0 0

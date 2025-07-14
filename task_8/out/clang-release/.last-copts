@@ -1,0 +1,1 @@
+-O3 -DNDEBUG=1 -g1 -ffp-contract=off   -MMD -MP -MF .d    -isystem /opt/mingw64/include -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer  -DOMNETPPLIBS_IMPORT -DINET_IMPORT -I. -IC:\Users\yosse\Desktop\TUHH-Msc\sim_cn\omnetpp-6.1_latest\omnetpp-6.1\samples\inet4.5/src -I/c/Users/yosse/Desktop/TUHH-Msc/sim_cn/omnetpp-6.1_latest/omnetpp-6.1/include
